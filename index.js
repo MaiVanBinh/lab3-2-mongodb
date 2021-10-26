@@ -1,10 +1,20 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const mongoose = require("mongoose");
 
 const app = express();
 
 const PORT = process.env.PORT || 3000;
+
+// connect with database
+const dbUserName = "...";
+const dbPw = "...";
+const dbName = "...";
+const MONGO_URI = `mongodb+srv://${dbUserName}:${dbPw}@cluster0.5zjmf.mongodb.net/${dbName}`;
+mongoose.connect(MONGO_URI, () => {
+  console.log("Connected to DB");
+});
 
 app.use(cors());
 
@@ -16,7 +26,7 @@ app.get("/", (req, res) => {
   res.send("Hello World, from express");
 });
 
-require('./app/routes')(app);
+require("./app/routes")(app);
 
 app.listen(PORT, () =>
   console.log(
