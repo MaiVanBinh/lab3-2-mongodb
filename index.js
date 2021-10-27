@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const mongoose = require("mongoose");
+require('dotenv').config()
 
 const app = express();
 
@@ -12,10 +13,9 @@ const docs = require('./swagger.json');
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(docs));
 
 // connect with database
-const dbUserName = "binh";
-const dbPw = "binh";
-const dbName = "lab3";
-const MONGO_URI = `mongodb+srv://${dbUserName}:${dbPw}@cluster0.5zjmf.mongodb.net/${dbName}`;
+
+
+const MONGO_URI = `mongodb+srv://${process.env.dbUserName}:${process.env.dbPw}@cluster0.5zjmf.mongodb.net/${process.env.dbName}`;
 mongoose.connect(MONGO_URI, () => {
   console.log("Connected to DB");
 });

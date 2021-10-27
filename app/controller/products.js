@@ -6,6 +6,7 @@ module.exports = {
 
     return res.status(200).json({ products: products });
   },
+
   createProducts: async function (req, res, next) {
     try {
       const { name, imageLink, type, price } = req.body;
