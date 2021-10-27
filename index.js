@@ -6,11 +6,15 @@ const mongoose = require("mongoose");
 const app = express();
 
 const PORT = process.env.PORT || 3000;
+const swaggerUi = require("swagger-ui-express");
+const docs = require('./swagger.json');
+
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(docs));
 
 // connect with database
-const dbUserName = "...";
-const dbPw = "...";
-const dbName = "...";
+const dbUserName = "binh";
+const dbPw = "binh";
+const dbName = "lab3";
 const MONGO_URI = `mongodb+srv://${dbUserName}:${dbPw}@cluster0.5zjmf.mongodb.net/${dbName}`;
 mongoose.connect(MONGO_URI, () => {
   console.log("Connected to DB");
