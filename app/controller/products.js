@@ -27,4 +27,5 @@ module.exports = {
       res.status(500).json({ mess: err.message });
     }
   },
+  // PUT/ DELETE
 };

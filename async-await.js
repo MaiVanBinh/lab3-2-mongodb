@@ -6,19 +6,9 @@ function delay(t, v) {
     }, t);
   });
 }
-
-// const hello = () => {
-//   console.log("hello ");
-// };
-
-// const waitAndSay = () => {
-//   setTimeout(() => {
-//     hello();
-//   }, 1000);
-// };
-
 const sayHello = () => {
-  delay().then((e) => console.log("binh"));
+  delay(100).then((e) => console.log("binh"));
+  console.log("something")
 };
 
 sayHello();
